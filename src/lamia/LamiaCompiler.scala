@@ -7,7 +7,7 @@ object LamiaCompiler {
   
   def compile(lamia: Ast): BFAst = {
     def registerWidth(ast: Ast): Int = ast match {
-      case Program(body) => body.map(registerWidth _).max
+      case Program(body) => body.map(registerWidth _).foldLeft(0)(_ max _)
       case Alloc(_, body) => 1 + registerWidth(body)
       case Rep(_, body) => registerWidth(body)
       case _ => 0

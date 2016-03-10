@@ -18,7 +18,6 @@ class Input(in: Reader) {
       true
     }
   }
-  
   next()
   
 }
